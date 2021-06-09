@@ -19,13 +19,26 @@ console.log(cargoHold);
 
 
 //c) Query the user to select a cabinet (0 - 3) in the cargoHold.
-const input = require('readlind-sync');
-let outerArray = input.question("Enter an number for the outer array: ");
-let innerArray = input.question("Enter a number for the inner array: ");
-console.log(cargoHold[Number(outerArray)][Number(innerArray)]);
-
+const input = require('readline-sync');
+/*let outerArray = input.question("Enter a number for the outer array (0-3): ");
+let innerArray = input.question("Enter a number for the inner array (0-3): ");
+console.log(cargoHold[Number(outerArray)][Number(innerArray)]);*/
+let cabinetChoice = input.question("Enter a number to select a cabinet (0-3): ");
+let itemSearch = input.question("What item are you looking for? ")
+cabinetChoice = Number(cabinetChoice);
+//console.log(cargoHold[Number(cabinetChoice)]);
 
 //d) Use bracket notation and a template literal to display the contents of the selected cabinet. If the user entered an invalid number, print an error message.
+if (cabinetChoice < 3) {
+// `The cabinet contains ${cargoHold[cabinetChoice].join(", ")}`
+    if (cargoHold[cabinetChoice].includes(itemSearch)) {
+      `Cabinet ${cargoHold[cabinetChoice].join(", ")} DOES contain ${itemSearch}.`
+    } else {
+      `Cabinet ${cargoHold[cabinetChoice].join(", ")} DOES NOT contain ${itemSearch}.`
+    }
+} else {
+  `Error: Invalid entry`
+}
 
 
 
